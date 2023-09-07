@@ -21,6 +21,9 @@ public class Lembrete {
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
 
+    public Lembrete(long l, String lembreteDeTeste1, Pessoa pessoa) {
+    }
+
     @PrePersist
     public void prePersist() {
         if (pessoa != null) {

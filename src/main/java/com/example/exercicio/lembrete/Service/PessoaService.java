@@ -1,5 +1,6 @@
 package com.example.exercicio.lembrete.Service;
 
+import com.example.exercicio.lembrete.DTO.PessoaDTO;
 import com.example.exercicio.lembrete.Entity.Pessoa;
 import com.example.exercicio.lembrete.Repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,13 @@ public class PessoaService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void cadastro (final Pessoa pessoa){
-        Assert.isTrue(pessoa.getNome() != null, "Erro, campo vazio.");
+    public void cadastro (final PessoaDTO pessoa){
+        //Assert.isTrue(pessoa.getNome() != null, "Erro, campo vazio.");
         this.pessoaRepository.save(pessoa);
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public void editar (final Long id, final Pessoa pessoa){
+    public void editar (final Long id, final PessoaDTO pessoa){
         final Pessoa pessoaBanco = this.pessoaRepository.findById(id).orElse(null);
 
         Assert.isTrue(pessoaBanco == null || !pessoaBanco.getId().equals(pessoa.getId()), "Não foi possível identificar o cliente.");

@@ -1,5 +1,6 @@
 package com.example.exercicio.lembrete.Controller;
 
+import com.example.exercicio.lembrete.DTO.PessoaDTO;
 import com.example.exercicio.lembrete.Entity.Pessoa;
 import com.example.exercicio.lembrete.Repository.PessoaRepository;
 import com.example.exercicio.lembrete.Service.PessoaService;
@@ -49,7 +50,7 @@ public class PessoaController {
     }
 
     @PutMapping("/editar/{id}")
-    public ResponseEntity<String> editarPessoa(@PathVariable Long id, @RequestBody Pessoa pessoa) {
+    public ResponseEntity<String> editarPessoa(@PathVariable Long id, @RequestBody PessoaDTO pessoa) {
         try {
             pessoaService.editar(id, pessoa);
             return ResponseEntity.ok("Edição realizada com sucesso!");

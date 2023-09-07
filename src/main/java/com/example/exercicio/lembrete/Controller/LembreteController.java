@@ -1,7 +1,6 @@
 package com.example.exercicio.lembrete.Controller;
 
-import com.example.exercicio.lembrete.Entity.Lembrete;
-import com.example.exercicio.lembrete.Entity.Pessoa;
+import com.example.exercicio.lembrete.DTO.LembretesDTO;
 import com.example.exercicio.lembrete.Service.LembreteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ public class LembreteController {
     private LembreteService lembreteService;
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<String> cadastrarLembrete(@RequestBody Lembrete lembrete) {
+    public ResponseEntity<String> cadastrarLembrete(@RequestBody LembretesDTO lembrete) {
         try {
             lembreteService.cadastrarLembrete(lembrete.getPessoa().getId(), lembrete.getLembrete());
             return ResponseEntity.ok("Lembrete cadastrado com sucesso!");
